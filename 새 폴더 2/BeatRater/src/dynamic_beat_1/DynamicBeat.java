@@ -14,18 +14,18 @@ public class DynamicBeat extends JFrame {
 	private Image screenImage;
 	private Graphics screenGraphic;
 	
-	private Image introBackground;
+	private Image introBackground = new ImageIcon(Main.class.getResource("../images/intro_background.jpg")).getImage();
+	private JLabel menuBar = new JLabel(new ImageIcon(Main.class.getResource("../images/menuBar.png")));
 	
 	public DynamicBeat() {
 		
+		setUndecorated(true);
 		setTitle("Dynamic Beat");
 		setSize(Main.SCREEN_WIDTH, Main.SCREEN_HEIGHT);
 		setResizable(false);
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setVisible(true);
-		
-		introBackground = new ImageIcon(Main.class.getResource("../images/intro_background.jpg")).getImage();
 		
 		Music introMusic = new Music("intromusic_umbrella.mp3", true);
 		introMusic.start();
@@ -41,6 +41,7 @@ public class DynamicBeat extends JFrame {
 
 	public void screenDraw(Graphics g) {
 		g.drawImage(introBackground,0,0,null);
+		paintComponents(g);
 		this.repaint();
 		
 	}
